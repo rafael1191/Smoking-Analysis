@@ -14,5 +14,5 @@ run the jupyter-notebook to load the survey(optional - built-in in the repo)
 run the app.py
 Enjoy :)
 
-# Where the database is from
+# Where the database is from?
 https://www.kaggle.com/datasets/h13380436001/h-lung-cancer
