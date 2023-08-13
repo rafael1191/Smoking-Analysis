@@ -4,7 +4,7 @@ Show how to alternate between multiple python technologies such as: matplotlib, 
 Shows a little analysis on the survey taken on 50K people around the world ( smokers and non smokers )
 
 # How to download the project?
-Open your Git Bash or command line, 
+Open your Git-Bash, 
 Run the command:
 cd <path> (preferable the user's path)
 git clone https://github.com/rafael1191/Smoking-Analysis.git
