@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<style>
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body {
+	background-color: #b6d5f7;
+	font-family: 'Khula', sans-serif;
+	font-weight: 300;
+	line-height: 1em;
+	margin: 0;
+padding: 2em 1em;
+}
+body{
+  display: table;
+  width: 100%;
+  background: #dedede;
+  text-align: center;
+}
+*{ 
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.aa_h2{
+  font:100 5rem/1 Roboto;
+  text-transform: uppercase;
+}
+table{
+   background: #fff;
+}
+table,thead,tbody,tfoot,tr, td,th{
+  text-align: center;
+  margin: auto;
+  border:1px solid #dedede;
+  padding: 1rem;
+  width: 50%;
+}
+.table    { display: table; width: 50%; }
+.tr       { display: table-row;  }
+.thead    { display: table-header-group }
+.tbody    { display: table-row-group }
+.tfoot    { display: table-footer-group }
+.col      { display: table-column }
+.colgroup { display: table-column-group }
+.td, .th   { display: table-cell; width: 50%; }
+.caption  { display: table-caption }
+
+.table,
+.thead,
+.tbody,
+.tfoot,
+.tr,
+.td,
+.th{
+  text-align: center;
+  margin: auto;
+  padding: 1rem;
+  color: black;
+}
+.table{
+  background: #fff;
+  margin: auto;
+  border:none;
+  padding: 0;
+  margin-bottom: 5rem;
+}
+
+.th{
+  font-weight: 700;
+  border:1px solid #dedede;
+  color: black;
+  &:nth-child(odd){
+    border-right:none;
+	color: black;
+  }
+}
+.td{
+  font-weight: 300;
+  color: black;
+  border:1px solid #dedede;
+  border-top:none;
+  &:nth-child(odd){
+    border-right:none;
+	color: black;
+  }
+}
+
+</style>
+<body>
+	<form class="grid" action="/analysis" method="POST">
+        <input type="Submit" value="To Analysis Page">
+	</form>
+	<form class="grid" action="/home" method="POST">
+        <input type="Submit" value="To Home Page">
+	</form>
+	<form class="grid" action="/news" method="POST">
+        <input type="Submit" value="To News Page">
+	</form>
+	
+
+{% if plot_image %}
+<h1>Smoking is the cause of cancer (Survey analysis)</h1>
+
+<h4>Bar graph that shows the comparison in people who got cancer by age and gender</h4>
+    <div>
+        <img src="data:image/png;base64,{{ plot_image }}" alt="Sample Plot">
+    </div>
+<h4>we can see that in this survey, woman are more likely to get cancer that man in the older days</h4>
+
+<h1>people by gender who got cancer and have or doesn have yellow finger</h1>
+    <div>
+        {{yellowfingertable | safe}} 
+    </div>
+{% endif %}
+
+{% if home %}
+<h1>Home Page</h1>
+<div><label name="PageNum" id="PageNum">page: 
+        {{PageNum | safe}} 
+		</label>
+</div>
+<div>
+	<table>
+	{{table | safe}} 
+	</table>
+</div>
+<form class="grid" action="/searchontable" method="POST">
+
+<div>
+
+	<input type="text" id="whatid" name="whatid">
+
+</div>
+
+        <input type="Submit" value="search spesific ID">
+	</form>
+	<form class="grid" action="/home" method="POST">
+        <input type="Submit" value="reset">
+	</form>
+	<form class="grid" action="/righttable" method="POST">
+	<input type="text" name="PageNum" id="PageNum" hidden="hidden" value='{{PageNum | safe}}' ></input>
+        
+		
+        <input type="Submit" value=">">
+	</form>
+	<form class="grid" action="/lefttable" method="POST">
+		<input type="text" name="PageNum" id="PageNum" hidden="hidden" value='{{PageNum | safe}}' ></input>
+        <input type="Submit" value="<">
+	</form>
+{% endif %}
+
+
+{% if newselm %}
+<h1>Home Page</h1>
+<div>
+        {{newselm | safe}} 
+</div>
+
+{% endif %}
+
+</body>
+
+</html>
